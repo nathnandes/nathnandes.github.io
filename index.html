@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Nathanael Fernandes</title>
+<style>
+/* Layout: single-column editorial portfolio; navy + green on blue-grey neutrals; Sora display, IBM Plex body/mono */
+:root{
+  --bg:#f3f6f9; --surface:#ffffff; --surface-2:#eef3f7;
+  --fg:#16222e; --muted:#566675; --faint:#7d8c99;
+  --accent:#1b3a5b; --accent-2:#2c6e49; --border:#dce4eb;
+  --shadow:0 1px 2px rgba(20,40,60,.06),0 8px 24px rgba(20,40,60,.06);
+  --display:"Sora",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e151c; --surface:#161f29; --surface-2:#1b2630;
+  --fg:#e7eef4; --muted:#9bacba; --faint:#75858f;
+  --accent:#74a9db; --accent-2:#64c395; --border:#273541;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0e151c; --surface:#161f29; --surface-2:#1b2630;
+  --fg:#e7eef4; --muted:#9bacba; --faint:#75858f;
+  --accent:#74a9db; --accent-2:#64c395; --border:#273541;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.6;
+  font-size:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;
+  padding-left:max(20px,env(safe-area-inset-left,0px));
+  padding-right:max(20px,env(safe-area-inset-right,0px));
+  padding-block:0}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+
+/* Header */
+header{padding-block:56px 40px;border-bottom:1px solid var(--border)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-2);margin:0 0 14px}
+h1{font-size:clamp(34px,7vw,52px);font-weight:700;letter-spacing:-.02em}
+.role{font-size:clamp(16px,2.6vw,19px);color:var(--muted);margin:14px 0 0;max-width:46ch}
+.loc{font-family:var(--mono);font-size:13px;color:var(--faint);margin:18px 0 0;display:flex;
+  align-items:center;gap:8px;flex-wrap:wrap}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--accent-2);display:inline-block}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;
+  font-size:14px;padding:10px 16px;border-radius:9px;border:1px solid var(--border);
+  background:var(--surface);color:var(--fg);text-decoration:none;box-shadow:var(--shadow);
+  transition:transform .12s ease,border-color .12s ease}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+:root[data-theme="dark"] .btn.primary{color:#0e151c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primary{color:#0e151c}}
+.btn .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--faint);border:1px solid var(--border);border-radius:5px;padding:1px 5px}
+.btn svg{width:16px;height:16px;flex:none}
+
+/* Sections */
+section{padding-block:40px;border-bottom:1px solid var(--border)}
+.sec-head{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 22px}
+.lead{font-size:clamp(17px,2.4vw,20px);line-height:1.55;max-width:60ch;margin:0}
+.lead strong{color:var(--accent-2);font-weight:600}
+
+/* Projects */
+.proj{display:flex;flex-direction:column;gap:30px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:26px;box-shadow:var(--shadow)}
+.card h3{font-size:clamp(20px,3vw,25px);font-weight:600;letter-spacing:-.01em}
+.card .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent-2);margin:0 0 10px}
+.card p{margin:14px 0 0;color:var(--muted)}
+.card p.body-fg{color:var(--fg)}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.stat{flex:1;min-width:120px;background:var(--surface-2);border:1px solid var(--border);
+  border-radius:11px;padding:14px 16px}
+.stat .n{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--accent);
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.stat .l{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+.stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.chip{font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:7px;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--muted)}
+.note{margin-top:18px;font-size:13.5px;color:var(--faint);border-left:2px solid var(--accent-2);
+  padding-left:12px}
+
+/* Experience */
+.exp{display:flex;flex-direction:column;gap:6px}
+.exp .title{font-family:var(--display);font-weight:600;font-size:18px}
+.exp .meta{font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+ul.clean{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.clean li{position:relative;padding-left:20px;color:var(--muted)}
+ul.clean li::before{content:"";position:absolute;left:3px;top:11px;width:6px;height:6px;
+  border-radius:50%;background:var(--accent-2)}
+
+/* Skills */
+.skillgrid{display:flex;flex-wrap:wrap;gap:8px}
+.skill{font-family:var(--body);font-size:14px;font-weight:500;padding:8px 14px;border-radius:9px;
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+.skill.key{border-color:var(--accent);color:var(--accent)}
+
+/* Footer */
+footer{padding-block:38px 60px;border-bottom:none}
+.email-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px}
+.email{font-family:var(--mono);font-size:15px;color:var(--fg);word-break:break-all}
+.copy{font-family:var(--body);font-size:13px;font-weight:600;padding:7px 13px;border-radius:8px;
+  border:1px solid var(--border);background:var(--surface);color:var(--accent);cursor:pointer}
+.copy:hover{border-color:var(--accent)}
+.foot-note{margin-top:22px;font-size:13px;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Portfólio</p>
+    <h1>Nathanael Fernandes de Castro</h1>
+    <p class="role">Estudante de Engenharia da Computação. Construo soluções que conectam dados, IA e negócio, de ponta a ponta.</p>
+    <p class="loc"><span class="dot"></span> Manaus/AM &nbsp;·&nbsp; disponível para mudança para Florianópolis/SC &nbsp;·&nbsp; formatura dez/2027</p>
+    <nav class="links">
+      <a class="btn primary" href="#contato">Contato</a>
+      <a class="btn" href="https://github.com/nathnandes" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-1.9c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.2-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.75.81 1.2 1.83 1.2 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/nathanael-fernandes-2833aa200/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </nav>
+  </header>
+
+  <section>
+    <p class="sec-head">Perfil</p>
+    <p class="lead">Aprendo construindo coisas que resolvem problemas reais. Atuo na <strong>ponte entre negócio e tecnologia</strong>: identifico dores, prototipo soluções com dados e IA, e entrego resultado medível, com senso crítico sobre risco e ética no uso de IA.</p>
+  </section>
+
+  <section>
+    <p class="sec-head">Projetos</p>
+    <div class="proj">
+
+      <article class="card">
+        <p class="kicker">Trabalho atual · automação e dados</p>
+        <h3>Automação de gestão e alertas para 6 empresas</h3>
+        <p class="body-fg">A diretoria não tinha visão diária de faturamento, ganhos e perdas das seis empresas do grupo, e transferências entre elas travavam sem ninguém perceber.</p>
+        <p>Construí, por fora do ERP CISS, uma aplicação que extrai os dados do banco e entrega automaticamente um resumo diário à diretoria, além de disparar alertas quando uma transferência passa horas sem recebimento. Deu visibilidade à gestão e ajudou a identificar uma falha de processo que encobria furto.</p>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
+          <span class="chip">SQLAlchemy 2</span><span class="chip">Alembic</span><span class="chip">Worker</span>
+          <span class="chip">Telegram Bot API</span><span class="chip">React + TS</span><span class="chip">Vite</span>
+          <span class="chip">Tailwind</span><span class="chip">Recharts</span><span class="chip">Docker</span>
+        </div>
+        <p class="note">Camada de IA: detector de anomalias em transferências com IsolationForest, que aponta a nota fora do padrão e explica o motivo. Testado até agora só com dados sintéticos. <a href="https://github.com/nathnandes/detector-anomalias-transferencias" target="_blank" rel="noopener">Ver o código no GitHub</a>.</p>
+      </article>
+
+      <article class="card">
+        <p class="kicker">Pesquisa pessoal · IA aplicada</p>
+        <h3>Modelo preditivo em gerador pseudoaleatório</h3>
+        <p class="body-fg">Investiguei se o gerador de números de uma plataforma era mesmo imprevisível. Projeto de machine learning do zero: da coleta de dados à avaliação do modelo.</p>
+        <p>Montei um coletor automatizado, tratei os dados com engenharia de atributos temporais e treinei uma rede neural e uma árvore de decisão, validando com MAE e RMSE e cuidando de overfitting. A hipótese se confirmou em teste controlado.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">~2 mi</div><div class="l">resultados analisados</div></div>
+          <div class="stat"><div class="n">171.300</div><div class="l">entradas no teste</div></div>
+          <div class="stat"><div class="n">12% &gt; 10%</div><div class="l">acerto acima do ponto de equilíbrio</div></div>
+        </div>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">TensorFlow / Keras</span><span class="chip">Scikit-learn</span>
+          <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Playwright</span>
+        </div>
+        <p class="note">Optei por não publicar o método, pela natureza do estudo e pelo risco de uso indevido. Falo da teoria e da validação à vontade.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-head">Experiência</p>
+    <div class="exp">
+      <div class="title">Auxiliar da Diretoria</div>
+      <div class="meta">Rede de material de construção · 6 empresas</div>
+    </div>
+    <ul class="clean">
+      <li>Gestão e auditoria de estoque de 6 empresas do grupo.</li>
+      <li>Controle e conferência de transferências entre as empresas.</li>
+      <li>Desenvolvimento próprio de uma aplicação (Python, FastAPI, PostgreSQL, React) que extrai dados do ERP CISS e gera relatórios e alertas para a diretoria.</li>
+      <li>Automação de relatórios diários de faturamento, ganhos e perdas.</li>
+      <li>Apoio à identificação de falhas de processo, incluindo um caso de furto.</li>
+    </ul>
+    <ul class="clean" style="margin-top:22px">
+      <li><strong style="color:var(--fg);font-weight:600">Estágio em Suporte de TI</strong> — manutenção de computadores e assistência técnica.</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="sec-head">Competências</p>
+    <div class="skillgrid">
+      <span class="skill key">Python</span><span class="skill key">SQL</span><span class="skill key">Machine Learning</span>
+      <span class="skill">PostgreSQL</span><span class="skill">FastAPI</span><span class="skill">scikit-learn</span>
+      <span class="skill">TensorFlow / Keras</span><span class="skill">React</span><span class="skill">TypeScript</span>
+      <span class="skill">Docker</span><span class="skill">Automação</span><span class="skill">Análise de Dados</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-head">Formação</p>
+    <div class="exp">
+      <div class="title">Engenharia da Computação</div>
+      <div class="meta">Conclusão prevista: dezembro de 2027</div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <p class="sec-head">Contato</p>
+    <div class="email-row">
+      <span class="email" id="email">nathanaelfernandes.891103@gmail.com</span>
+      <button class="copy" id="copyBtn" type="button">Copiar</button>
+    </div>
+    <div class="email-row" style="margin-top:18px">
+      <a class="btn" href="https://github.com/nathnandes" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/nathanael-fernandes-2833aa200/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('copyBtn');
+  var email=document.getElementById('email').textContent.trim();
+  btn.addEventListener('click',function(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(email).then(function(){
+        btn.textContent='Copiado';setTimeout(function(){btn.textContent='Copiar';},1600);
+      }).catch(select);
+    }else{select();}
+  });
+  function select(){
+    try{var r=document.createRange();r.selectNode(document.getElementById('email'));
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      btn.textContent='Selecionado';setTimeout(function(){btn.textContent='Copiar';},1600);
+    }catch(e){}
+  }
+})();
+</script>
+</body>
+</html>
