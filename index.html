@@ -145,6 +145,26 @@ footer{padding-block:38px 60px;border-bottom:none}
     <div class="proj">
 
       <article class="card">
+        <p class="kicker">Projeto de IA · código público</p>
+        <h3>Detector de anomalias em transferências</h3>
+        <p class="body-fg">Uma rede de empresas transfere mercadoria entre si todos os dias, e ninguém consegue conferir nota por nota. Também não existe histórico confiável do que foi erro ou fraude para treinar um classificador.</p>
+        <p>Construí um modelo não supervisionado (IsolationForest) que aprende o padrão de cada rota, aponta as notas fora dele e explica o motivo em português. O limiar vem da capacidade de conferir, e a avaliação treina no passado e mede no futuro, comparando com uma regra simples.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">0,83 vs 0,52</div><div class="l">recall: modelo vs regra simples</div></div>
+          <div class="stat"><div class="n">0,57 vs 0,35</div><div class="l">precisão: modelo vs regra simples</div></div>
+          <div class="stat"><div class="n">20</div><div class="l">simulações não usadas nos ajustes</div></div>
+        </div>
+        <p>O que funcionou: comparar cada nota com a própria rota e explicar cada alerta recalculando o score. O que aprendi: minha primeira regra de comparação favorecia o modelo e precisei refazê-la, e atraso longo, sozinho, pede uma regra de prazo por rota, não mais modelo.</p>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">IsolationForest</span>
+          <span class="chip">NumPy</span><span class="chip">pytest</span><span class="chip">GitHub Actions</span>
+        </div>
+        <p class="note">Resultados obtidos só com dados sintéticos: mostram que o método funciona nesses padrões, não a eficácia em produção. Fora do padrão é um pedido de conferência, não acusação de erro ou fraude.</p>
+        <div class="links"><a class="btn primary" href="https://github.com/nathnandes/detector-anomalias-transferencias" target="_blank" rel="noopener">Ver o código no GitHub</a></div>
+      </article>
+
+
+      <article class="card">
         <p class="kicker">Trabalho atual · automação e dados</p>
         <h3>Automação de gestão e alertas para 6 empresas</h3>
         <p class="body-fg">A diretoria não tinha visão diária de faturamento, ganhos e perdas das seis empresas do grupo, e transferências entre elas travavam sem ninguém perceber.</p>
@@ -155,7 +175,7 @@ footer{padding-block:38px 60px;border-bottom:none}
           <span class="chip">Telegram Bot API</span><span class="chip">React + TS</span><span class="chip">Vite</span>
           <span class="chip">Tailwind</span><span class="chip">Recharts</span><span class="chip">Docker</span>
         </div>
-        <p class="note">Camada de IA: detector de anomalias em transferências com IsolationForest, que aponta a nota fora do padrão e explica o motivo. Testado até agora só com dados sintéticos. <a href="https://github.com/nathnandes/detector-anomalias-transferencias" target="_blank" rel="noopener">Ver o código no GitHub</a>.</p>
+        <p class="note">A camada de IA deste sistema é o detector de anomalias acima, integrado a um worker e a um painel. O sistema é privado, e o detector ainda não rodou com dados reais.</p>
       </article>
 
       <article class="card">
